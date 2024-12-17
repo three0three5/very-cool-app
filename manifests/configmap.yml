@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-env
+data:
+  DB_HOST: "db:5432"
+  DB_NAME: "feature_db"
+  LIQUIBASE_COMMAND_CHANGELOG_FILE: "/changelog/db.changelog-master.xml"
+

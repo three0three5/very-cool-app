@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-base-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: base-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: base-app
+    spec:
+      containers:
+        - image: orobtsovv/base-app
+          name: base-app
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: FEATURE_FLAG_SERVICE_HOST
+              value: "http://feature-service"

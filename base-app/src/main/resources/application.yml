@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: base-app
+
+server:
+  port: 8080
+  servlet:
+    context-path: /base-app
+
+feature-flag-client:
+  hostname: "${FEATURE_FLAG_SERVICE_HOST}"
+  path-for-feature: "/feature-service/feature"
+  feature-name: "SQUARED_NUMBER"
+
+client:
+  retry: 3
+  connection-timeout: 10000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true

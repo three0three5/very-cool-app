@@ -1,0 +1,2 @@
+INSERT INTO features VALUES
+('SQUARED_NUMBER', True);
